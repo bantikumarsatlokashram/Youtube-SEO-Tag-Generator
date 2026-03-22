@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube SEO Tags Generator by BKPKVIDEO</title>
+    <meta name="description" content="Generate high-ranking YouTube SEO tags from your video title or keyword. Boost your views with the best free YouTube tag generator by BKPKVIDEO.">
+    <meta name="keywords" content="youtube tag generator, youtube seo tags, youtube tags extractor, best tags for youtube, viral youtube tags, bkpkvideo tools, youtube keyword research, youtube seo tool, increase youtube views">
+    <meta name="author" content="BKPKVIDEO">
+    
+    <!-- Open Graph / Social Meta Tags -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="YouTube SEO Tags Generator - BKPKVIDEO Tools" />
+    <meta property="og:description" content="Generate high-ranking YouTube SEO tags and hashtags to get more views on your videos. Free tool by BKPKVIDEO." />
+    <meta property="og:url" content="https://www.bkpkvideo.com/tools/youtube-seo-tags/" />
+    <meta property="og:site_name" content="BKPK VIDEO" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@BKPKVIDEO" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    colors: {
+                        youtube: '#FF0000',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    </style>
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Subtle mesh gradient background */
+        body {
+            background-color: #f3f4f6;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,0.03) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,0.03) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,0.03) 0, transparent 50%);
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark {
+            background-color: #111827;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,100%,50%,0.1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,100%,50%,0.1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,100%,50%,0.1) 0, transparent 50%);
+        }
+
+        /* Apple Glass Aesthetic */
+        .apple-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px) saturate(190%);
+            -webkit-backdrop-filter: blur(25px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .dark .apple-glass {
+            background: rgba(30, 30, 35, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Input Pods */
+        .input-pod {
+            background: rgba(0, 0, 0, 0.04);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .dark .input-pod {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .input-pod:focus-within {
+            background: rgba(0, 0, 0, 0.07);
+            box-shadow: inset 0 0 0 2px rgba(0, 122, 255, 0.5);
+        }
+
+        .dark .input-pod:focus-within {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 0 2px rgba(10, 132, 255, 0.5);
+        }
+
+        /* Primary Button */
+        .nav-btn-main {
+            background: #007AFF;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.35);
+            color: white;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn-main:hover {
+            opacity: 0.9;
+            transform: scale(0.98);
+        }
+        
+        .nav-btn-main:disabled {
+            background: #a1a1aa;
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Secondary Copy Button */
+        .copy-btn {
+            transition: all 0.2s ease;
+        }
+        .copy-btn:hover {
+            transform: translateY(-2px);
+        }
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.15); border-radius: 10px; }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); }
+
+        /* Loader Animation */
+        .loader {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Modal Animation */
+        .modal-enter {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+        .modal-enter .modal-content {
+            transform: scale(1) !important;
+        }
+    </style>
+</head>
+<body class="text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="w-full p-4 md:px-8 md:py-5 apple-glass fixed top-0 z-50 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-[12px] bg-blue-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                <i class="fas fa-rocket text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-lg md:text-xl font-extrabold tracking-tight leading-tight">SEO Tags Generator</h1>
+                <p class="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest">by BKPKVIDEO</p>
+            </div>
+        </div>
+        <div>
+            <button id="themeBtn" onclick="toggleTheme()" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 transition-colors" title="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="w-full max-w-4xl mx-auto pt-28 pb-20 px-4 md:px-0 flex flex-col gap-6 relative z-10 min-h-screen">
+        
+        <!-- Input Section -->
+        <div class="apple-glass rounded-[24px] shadow-2xl p-6 md:p-8 flex flex-col gap-6">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">Generate Viral SEO Tags</h2>
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Enter your YouTube video title or main keyword to extract high-ranking SEO tags.</p>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <div class="input-pod flex-1 flex flex-col px-4 py-3 rounded-[16px]">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-keyboard text-blue-500 mr-2 text-sm"></i>
+                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Video Title / Keyword</span>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="text" id="keywordInput" placeholder="E.g., How to grow on YouTube 2026..." 
+                               class="w-full bg-transparent py-2 text-[16px] outline-none font-semibold text-gray-800 dark:text-white placeholder-gray-400">
+                        <button onclick="clearInput()" class="text-gray-400 hover:text-red-500 transition-colors px-2" title="Clear Input">
+                            <i class="fas fa-times-circle"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Modifiers -->
+                <div class="flex flex-wrap items-center gap-2 text-xs font-semibold">
+                    <span class="text-gray-500">Modifiers:</span>
+                    <button onclick="appendKeyword('Tutorial')" class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 px-3 py-1 rounded-full transition-colors">+ Tutorial</button>
+                    <button onclick="appendKeyword('2024')" class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 px-3 py-1 rounded-full transition-colors">+ 2024</button>
+                    <button onclick="appendKeyword('in Hindi')" class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 px-3 py-1 rounded-full transition-colors">+ in Hindi</button>
+                    <button onclick="appendKeyword('Review')" class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 px-3 py-1 rounded-full transition-colors">+ Review</button>
+                </div>
+
+                <button id="generateBtn" onclick="generateTags()" class="nav-btn-main w-full md:w-auto self-center px-10 py-4 rounded-[16px] text-sm font-bold flex items-center justify-center gap-2 mt-2">
+                    <i class="fas fa-magic"></i> <span>Generate SEO Tags</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section (Hidden by Default) -->
+        <div id="resultsContainer" class="hidden flex-col gap-6">
+            
+            <!-- SEO Score Card -->
+            <div class="apple-glass rounded-[24px] shadow-xl p-6 flex flex-row gap-6 items-center justify-center bg-gradient-to-r from-blue-50/50 to-purple-50/50 dark:from-blue-900/10 dark:to-purple-900/10 border-l-4 border-l-green-500">
+                <div class="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0 shadow-lg shadow-green-500/20">
+                    <span class="text-xl font-extrabold text-green-600 dark:text-green-400">98</span>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">SEO Score: Excellent</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium">These tags are fully optimized for the YouTube algorithm to maximize reach.</p>
+                </div>
+            </div>
+
+            <!-- YouTube Tags Box -->
+            <div class="apple-glass rounded-[24px] shadow-2xl p-6 md:p-8 relative">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-extrabold flex items-center gap-2">
+                        <i class="fab fa-youtube text-red-500"></i> YouTube Tags Box
+                    </h3>
+                    <span class="text-xs font-bold text-gray-400" id="tagCount">0 Tags (0/500 chars)</span>
+                </div>
+                
+                <p class="text-xs text-gray-500 mb-3 font-medium">Copy and paste these comma-separated tags into the "Tags" section of your YouTube video.</p>
+                
+                <div class="input-pod p-4 rounded-[16px] relative group">
+                    <textarea id="ytTagsOutput" readonly class="w-full h-32 bg-transparent resize-none outline-none text-sm font-medium leading-relaxed custom-scrollbar text-gray-800 dark:text-gray-200"></textarea>
+                    
+                    <button onclick="copyToClipboard('ytTagsOutput', 'tagsCopyBtn')" id="tagsCopyBtn" class="copy-btn absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-[10px] text-xs font-bold shadow-lg shadow-blue-500/30 flex items-center gap-2">
+                        <i class="fas fa-copy"></i> Copy Tags
+                    </button>
+                </div>
+            </div>
+
+            <!-- Description Hashtags Box -->
+            <div class="apple-glass rounded-[24px] shadow-2xl p-6 md:p-8 relative mb-10">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-extrabold flex items-center gap-2">
+                        <i class="fas fa-hashtag text-purple-500"></i> Video Description Hashtags
+                    </h3>
+                </div>
+                
+                <p class="text-xs text-gray-500 mb-3 font-medium">Add these hashtags to the bottom of your video description (Max 15 allowed by YouTube).</p>
+                
+                <div class="input-pod p-4 rounded-[16px] relative group">
+                    <textarea id="ytHashtagsOutput" readonly class="w-full h-24 bg-transparent resize-none outline-none text-sm font-medium leading-relaxed custom-scrollbar text-blue-600 dark:text-blue-400"></textarea>
+                    
+                    <button onclick="copyToClipboard('ytHashtagsOutput', 'hashCopyBtn')" id="hashCopyBtn" class="copy-btn absolute bottom-4 right-4 bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-[10px] text-xs font-bold shadow-lg shadow-purple-500/30 flex items-center gap-2">
+                        <i class="fas fa-copy"></i> Copy Hashtags
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer Watermark -->
+    <footer class="w-full text-center pb-8 pt-2 text-sm font-bold text-gray-400 dark:text-gray-500 relative z-10 transition-colors duration-300">
+        Made with <i class="fas fa-heart text-red-500 mx-1 animate-pulse"></i> by Banti Kumar
+    </footer>
+
+    <!-- Alert Modal -->
+    <div id="alertModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="modal-content apple-glass rounded-[24px] shadow-2xl w-[90%] max-w-sm p-6 transform scale-95 transition-transform duration-300 text-center">
+            <i class="fas fa-exclamation-circle text-4xl text-blue-500 mb-4" id="alertIcon"></i>
+            <h2 class="text-xl font-extrabold mb-2 text-gray-900 dark:text-white" id="alertTitle">Notice</h2>
+            <p id="alertMessage" class="text-sm font-medium text-gray-600 dark:text-gray-300 mb-6"></p>
+            <button onclick="closeModal('alertModal')" class="w-full nav-btn-main py-3 rounded-[14px] text-sm font-bold">OK</button>
+        </div>
+    </div>
+
+
+    <script>
+        // DOM Elements
+        const keywordInput = document.getElementById('keywordInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const ytTagsOutput = document.getElementById('ytTagsOutput');
+        const ytHashtagsOutput = document.getElementById('ytHashtagsOutput');
+        const tagCount = document.getElementById('tagCount');
+
+        // Initialization
+        window.onload = () => {
+            applyStoredTheme();
+            
+            // Allow pressing Enter to generate
+            keywordInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    generateTags();
+                }
+            });
+        };
+
+        /* --- THEME LOGIC --- */
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            document.body.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('appleToolTheme', isDark ? 'dark' : 'light');
+            
+            const themeBtn = document.getElementById('themeBtn');
+            themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+
+        function applyStoredTheme() {
+            if (localStorage.getItem('appleToolTheme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark');
+                document.getElementById('themeBtn').innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        /* --- UTILS & MODALS --- */
+        function clearInput() {
+            keywordInput.value = '';
+            keywordInput.focus();
+        }
+
+        function appendKeyword(word) {
+            let val = keywordInput.value.trim();
+            if(val && !val.toLowerCase().includes(word.toLowerCase())) {
+                keywordInput.value = val + ' ' + word;
+            }
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('modal-enter');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('modal-enter');
+        }
+
+        function showAlert(msg, title = "Notice", iconClass = "fa-exclamation-circle text-blue-500") {
+            document.getElementById('alertTitle').textContent = title;
+            document.getElementById('alertMessage').textContent = msg;
+            document.getElementById('alertIcon').className = `fas ${iconClass} text-4xl mb-4`;
+            openModal('alertModal');
+        }
+
+        function setLoading(isLoading) {
+            if (isLoading) {
+                generateBtn.disabled = true;
+                generateBtn.innerHTML = `<div class="loader"></div> <span>Generating tags...</span>`;
+            } else {
+                generateBtn.disabled = false;
+                generateBtn.innerHTML = `<i class="fas fa-magic"></i> <span>Generate SEO Tags</span>`;
+            }
+        }
+
+        async function copyToClipboard(elementId, btnId) {
+            const copyText = document.getElementById(elementId);
+            const btn = document.getElementById(btnId);
+            const originalHtml = btn.innerHTML;
+
+            try {
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); // For mobile devices
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges(); 
+
+                btn.innerHTML = `<i class="fas fa-check"></i> Copied!`;
+                btn.classList.replace('bg-blue-500', 'bg-green-500');
+                btn.classList.replace('bg-purple-500', 'bg-green-500');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHtml;
+                    btn.classList.replace('bg-green-500', elementId.includes('Hash') ? 'bg-purple-500' : 'bg-blue-500');
+                }, 2000);
+            } catch (err) {
+                showAlert("Failed to copy to clipboard.", "Error", "fa-times-circle text-red-500");
+            }
+        }
+
+        /* --- ADVANCED SEO TAG GENERATION ENGINE --- */
+        
+        // Fetch Live Google/YouTube Suggest API data using JSONP
+        async function fetchYouTubeAutocomplete(keyword) {
+            return new Promise((resolve) => {
+                const safeKeyword = keyword.length > 50 ? keyword.substring(0, 50) : keyword;
+                const callbackName = 'yt_suggest_cb_' + Math.round(100000 * Math.random());
+                
+                window[callbackName] = function(data) {
+                    delete window[callbackName];
+                    const scriptTag = document.getElementById(callbackName);
+                    if (scriptTag) document.body.removeChild(scriptTag);
+                    
+                    if (data && data[1] && Array.isArray(data[1])) {
+                        const suggestions = data[1].map(item => item[0]);
+                        resolve(suggestions);
+                    } else {
+                        resolve([]);
+                    }
+                };
+
+                const script = document.createElement('script');
+                script.id = callbackName;
+                script.src = `https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&q=${encodeURIComponent(safeKeyword)}&jsonp=${callbackName}`;
+                
+                script.onerror = function() {
+                    delete window[callbackName];
+                    if (document.getElementById(callbackName)) {
+                        document.body.removeChild(document.getElementById(callbackName));
+                    }
+                    resolve([]); 
+                };
+                
+                document.body.appendChild(script);
+                
+                setTimeout(() => {
+                    if (window[callbackName]) {
+                        delete window[callbackName];
+                        if (document.getElementById(callbackName)) {
+                            document.body.removeChild(document.getElementById(callbackName));
+                        }
+                        resolve([]);
+                    }
+                }, 4000);
+            });
+        }
+
+        // Smart Text Splitter: Extracts broad, high-ranking seed keywords from a long title
+        function getSeedKeywords(text) {
+            const stopWords = ['is','am','are','the','a','an','of','to','in','on','and','for','with','by','it','this','that',
+                               'ke','ki','ka','ko','jo','aap','nahi','jante','hai','hain','yeh','woh','se','mein','par','aur','hi','bhi',
+                               'नहीं', 'है', 'के', 'की', 'और', 'में', 'का', 'को', 'जो', 'से', 'तो', 'पर', 'ये', 'वो', 'आप', 'हम', 'वाले', 'लिए'];
+
+            let seeds = [];
+            
+            // 1. If it's a short keyword, use it directly
+            if (text.length < 35) {
+                seeds.push(text);
+            }
+
+            // 2. Break by dividers to find natural phrases
+            const dividers = /[|\-\\/!?:()\[\]",]+/g;
+            let chunks = text.split(dividers).map(s => s.trim()).filter(s => s.length > 3);
+
+            for (let chunk of chunks) {
+                seeds.push(chunk); // Push the entire segment
+                
+                // Get broad seeds by extracting the first 2-3 meaningful words of each chunk
+                let words = chunk.split(/\s+/).filter(w => !stopWords.includes(w.toLowerCase()));
+                if (words.length >= 2) seeds.push(words.slice(0, 2).join(' '));
+                if (words.length >= 3) seeds.push(words.slice(0, 3).join(' '));
+            }
+
+            // 3. Extract purely English entities (e.g., "Sant Rampal Ji", "SATLOK ASHRAM")
+            const englishMatch = text.match(/[a-zA-Z0-9\s]+/g);
+            if (englishMatch) {
+                let engChunks = englishMatch.map(s => s.trim()).filter(s => s.length > 4);
+                for (let ec of engChunks) {
+                    seeds.push(ec);
+                    let words = ec.split(/\s+/).filter(w => !stopWords.includes(w.toLowerCase()));
+                    if(words.length >= 2) seeds.push(words.slice(0, 2).join(' '));
+                }
+            }
+
+            // Remove exact duplicates and overly short/long fragments
+            seeds = [...new Set(seeds)].filter(s => s.length > 3 && s.length <= 45);
+
+            // Prioritize the best 5 seeds to query the API (prevents overloading and gets best results)
+            return seeds.slice(0, 5);
+        }
+
+        function generateAlgorithmicTags(cleanBase) {
+            const currentYear = new Date().getFullYear();
+            return [
+                `${cleanBase} ${currentYear}`,
+                `${cleanBase} in hindi`,
+                `${cleanBase} tutorial`,
+                `how to ${cleanBase}`,
+                `${cleanBase} explained`,
+                `${cleanBase} viral`
+            ];
+        }
+
+        async function generateTags() {
+            let input = keywordInput.value.trim();
+            if (!input) return showAlert("Please enter a Video Title or Keyword first.");
+
+            setLoading(true);
+            resultsContainer.classList.add('hidden');
+            resultsContainer.classList.remove('flex');
+
+            try {
+                let allTags = [];
+                let seeds = getSeedKeywords(input);
+                
+                // Fetch tags from YouTube API for all seeds concurrently
+                const apiPromises = seeds.map(seed => fetchYouTubeAutocomplete(seed));
+                const apiResults = await Promise.all(apiPromises);
+
+                apiResults.forEach(tags => {
+                    allTags.push(...tags);
+                });
+
+                // Add algorithmic tags for the most prominent seed
+                if (seeds.length > 0) {
+                    allTags.push(...generateAlgorithmicTags(seeds[0]));
+                    allTags.push(...seeds); // Add the chunks themselves as tags
+                }
+
+                // Always include the raw input without special chars
+                const safeInput = input.replace(/[|\-\\/!?:()\[\]",]+/g, ' ').replace(/\s+/g, ' ').trim();
+                allTags.unshift(safeInput);
+
+                // Clean and normalize all tags
+                allTags = allTags.map(tag => tag.toLowerCase().trim());
+                
+                // Strict Filtering of junk/stop words as standalone tags
+                const badStandaloneWords = ['aur', 'hai', 'ki', 'ka', 'ke', 'mein', 'se', 'ko', 'jo', 'tak', 'hain', 'is', 'in', 'of', 'and', 'the', 'to', 'for', 'with', 'on', 'by', 'at', 'an', 'a', 'नहीं', 'है', 'के', 'की', 'और', 'में', 'का', 'को', 'जो', 'से', 'तो', 'पर', 'ये', 'वो', 'आप', 'हम', 'जानते', 'रहस्य', 'बड़े', 'धर्म', 'वाले', 'लिए'];
+
+                let uniqueTags = [...new Set(allTags)].filter(tag => {
+                    if (tag.length < 3 || tag.length > 45) return false;
+                    if (badStandaloneWords.includes(tag)) return false;
+                    // Remove exact stop-word fragments generated by older splits
+                    if (['रहस्य नहीं', 'नहीं जानते', 'जो आप नहीं जानते', 'आप नहीं जानते'].includes(tag)) return false;
+                    return true;
+                });
+
+                // STRICT YOUTUBE LIMIT: 500 characters max
+                let finalTagsList = [];
+                let currentLength = 0;
+
+                for (let tag of uniqueTags) {
+                    let additionalLength = tag.length + (finalTagsList.length > 0 ? 2 : 0); // +2 for ", "
+                    
+                    if (currentLength + additionalLength <= 500) {
+                        finalTagsList.push(tag);
+                        currentLength += additionalLength;
+                    } else {
+                        break; 
+                    }
+                }
+
+                if (finalTagsList.length === 0) {
+                    let fallbackTag = safeInput.substring(0, 45);
+                    finalTagsList = [fallbackTag];
+                    currentLength = fallbackTag.length;
+                }
+
+                // Render Tags Output
+                ytTagsOutput.value = finalTagsList.join(', ');
+                tagCount.textContent = `${finalTagsList.length} Tags (${currentLength}/500 chars)`;
+
+                // Generate Hashtags (Max 15, CamelCase, strictly alphanumeric)
+                let hashTags = [];
+                
+                // Extract English words for premium hashtags
+                const pureEnglishWords = safeInput.match(/[a-zA-Z0-9]+/g);
+                if (pureEnglishWords) {
+                    hashTags = pureEnglishWords.filter(w => w.length >= 3)
+                        .map(w => '#' + w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+                }
+
+                // Create hashtags from seeds if English words are few
+                if (hashTags.length < 5 && seeds.length > 0) {
+                    seeds.forEach(seed => {
+                        let chunkHash = seed.split(/\s+/)
+                            .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+                            .join('').replace(/[^a-zA-Z0-9\u0900-\u097F]/g, '');
+                        
+                        if (chunkHash.length > 2 && chunkHash.length < 25) {
+                            hashTags.push('#' + chunkHash);
+                        }
+                    });
+                }
+
+                ytHashtagsOutput.value = [...new Set(hashTags)].slice(0, 15).join(' ');
+
+                resultsContainer.classList.add('flex');
+                resultsContainer.classList.remove('hidden');
+
+            } catch (error) {
+                console.error(error);
+                showAlert("An error occurred while generating tags. Please check your internet connection.", "Generation Error", "fa-exclamation-triangle text-red-500");
+            } finally {
+                setLoading(false);
+            }
+        }
+
+    </script>
+</body>
+</html>
